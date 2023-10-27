@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_27_094861) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_27_101425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "index"
+    t.string "msg_hash"
+    t.string "root"
+    t.string "channel"
+    t.integer "from_chain_id"
+    t.string "from"
+    t.integer "to_chain_id"
+    t.string "to"
+    t.integer "block_number"
+    t.integer "block_timestamp"
+    t.string "transaction_hash"
+    t.integer "status"
+    t.text "encoded"
+    t.integer "from_network_id"
+    t.integer "to_network_id"
+    t.string "dispatch_transaction_hash"
+    t.integer "dispatch_block_number"
+    t.integer "dispatch_block_timestamp"
+    t.string "clear_transaction_hash"
+    t.integer "clear_block_number"
+    t.integer "clear_block_timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["msg_hash"], name: "index_messages_on_msg_hash", unique: true
+    t.index ["root"], name: "index_messages_on_root", unique: true
+  end
 
   create_table "pug_evm_contracts", force: :cascade do |t|
     t.integer "network_id"
