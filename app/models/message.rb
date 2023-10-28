@@ -32,5 +32,7 @@ class Message < ApplicationRecord
   belongs_to :to_network, class_name: 'Pug::Network', foreign_key: 'to_network_id'
 
   # dispatch will have 2 status: dispatched and success, dispatched but failed
+  # accepted -> root_ready -> dispatch_success
+  #                  +------> dispatch_failed
   enum status: { accepted: 0, root_ready: 1, dispatch_success: 2, dispatch_failed: 3 }
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_27_101425) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_27_144533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_27_101425) do
     t.integer "clear_block_timestamp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "oracle_assigned", default: false
+    t.boolean "oracle_relayed", default: false
+    t.boolean "relayer_assigned", default: false
+    t.boolean "relayer_relayed", default: false
     t.index ["msg_hash"], name: "index_messages_on_msg_hash", unique: true
     t.index ["root"], name: "index_messages_on_root", unique: true
   end
